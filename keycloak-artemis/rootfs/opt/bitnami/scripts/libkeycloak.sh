@@ -99,7 +99,7 @@ keycloak_configure_database() {
 embed-server --server-config=${KEYCLOAK_CONF_FILE} --std-out=echo
 batch
 /subsystem=datasources/data-source=KeycloakDS: remove()
-/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url="jdbc:postgresql://${KEYCLOAK_DATABASE_HOST}:${KEYCLOAK_DATABASE_PORT}/${KEYCLOAK_DATABASE_NAME}${jdbc_params}", driver-name=postgresql)
+/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url="jdbc:postgresql://${KEYCLOAK_DATABASE_HOST}/${KEYCLOAK_DATABASE_NAME}${jdbc_params}", driver-name=postgresql)
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=user-name, value=\${env.KEYCLOAK_DATABASE_USER})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=check-valid-connection-sql, value="SELECT 1")
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=background-validation, value=true)
@@ -364,12 +364,32 @@ keycloak_initialize() {
     keycloak_clean_from_restart
 
     # Wait for database
-    info "Trying to connect to PostgreSQL server $KEYCLOAK_DATABASE_HOST..."
-    if ! retry_while "wait-for-port --host $KEYCLOAK_DATABASE_HOST --timeout 10 $KEYCLOAK_DATABASE_PORT" "$KEYCLOAK_INIT_MAX_RETRIES"; then
-        error "Unable to connect to host $KEYCLOAK_DATABASE_HOST"
-        exit 1
-    else
-        info "Found PostgreSQL server listening at $KEYCLOAK_DATABASE_HOST:$KEYCLOAK_DATABASE_PORT"
+    info "Trying to connect to PostgreSQL server $KEYCLOAK_DATABASE_HOST  "
+    IFS=',' read -ra ADDR <<< "$KEYCLOAK_DATABASE_HOST"
+    count=''
+    for HOST in "${ADDR[@]}"; do
+        if [[ "$HOST" == *":"* ]]; then
+            # Extract IP and PORT if provided in the format IP:PORT
+            IP=$(echo "$HOST" | cut -d':' -f1)
+            PORT=$(echo "$HOST" | cut -d':' -f2)
+        else
+            # If only IP is provided, use the default KEYCLOAK_DATABASE_PORT
+            IP="$HOST"
+            PORT="$KEYCLOAK_DATABASE_PORT"
+            export KEYCLOAK_DATABASE_HOST="$IP:$KEYCLOAK_DATABASE_PORT"
+            echo "Single postgres server KEYCLOAK_DATABASE_HOST : $KEYCLOAK_DATABASE_HOST"
+        fi
+
+        info "Checking PostgreSQL server at $IP:$PORT..."
+        if retry_while "wait-for-port --host $IP --timeout 10 $PORT" "$KEYCLOAK_INIT_MAX_RETRIES"; then
+            ((count++));
+            info "Found PostgreSQL server listening at $IP:$PORT and server count : $count"
+        fi
+    done
+
+    if [[ $count -eq 0 ]]; then
+      echo "Unable to connect to any PostgreSQL host in $KEYCLOAK_DATABASE_HOST"
+      exit 1;
     fi
 
     if ! is_dir_empty "$KEYCLOAK_MOUNTED_CONF_DIR"; then
