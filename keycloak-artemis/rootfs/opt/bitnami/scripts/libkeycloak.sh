@@ -373,7 +373,7 @@ keycloak_initialize() {
             # Extract IP and PORT if provided in the format IP:PORT
             IP=$(echo "$HOST" | cut -d':' -f1)
             PORT=$(echo "$HOST" | cut -d':' -f2)
-            KEYCLOAK_DATABASE_HOSTS_LIST+="$IP:$KEYCLOAK_DATABASE_PORT"
+            KEYCLOAK_DATABASE_HOSTS_LIST+="$IP:$KEYCLOAK_DATABASE_PORT,"
         else
             # If only IP is provided, use the default KEYCLOAK_DATABASE_PORT
             IP="$HOST"
