@@ -366,7 +366,7 @@ keycloak_initialize() {
     # Wait for database
     info "Trying to connect to PostgreSQL server $KEYCLOAK_DATABASE_HOST  "
     IFS=',' read -ra ADDR <<< "$KEYCLOAK_DATABASE_HOST"
-    count=''
+    count=0
     for HOST in "${ADDR[@]}"; do
         if [[ "$HOST" == *":"* ]]; then
             # Extract IP and PORT if provided in the format IP:PORT
