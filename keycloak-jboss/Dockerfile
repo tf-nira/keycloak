@@ -1,4 +1,5 @@
-FROM jboss/keycloak:9.0.0
+#FROM jboss/keycloak:9.0.0
+FROM quay.io/keycloak/keycloak:15.0.2-legacy
 
 ARG SOURCE
 ARG COMMIT_HASH
