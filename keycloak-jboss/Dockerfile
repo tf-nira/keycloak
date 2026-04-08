@@ -4,22 +4,21 @@ ARG SOURCE
 ARG COMMIT_HASH
 ARG COMMIT_ID
 ARG BUILD_TIME
-
 LABEL source=${SOURCE}
 LABEL commit_hash=${COMMIT_HASH}
 LABEL commit_id=${COMMIT_ID}
 LABEL build_time=${BUILD_TIME}
 
-ADD --chown=keycloak:keycloak ./theme/ ./theme
+COPY --chown=keycloak:keycloak ./theme/ ./theme
 
 RUN mkdir -p /opt/keycloak/themes && \
     cp -R ./theme/mosip /opt/keycloak/themes/mosip && \
     cp -R ./theme/base /opt/keycloak/themes/base
 
-ADD --chown=keycloak:keycloak ./standalone/ ./standalone
+COPY --chown=keycloak:keycloak ./standalone/ ./standalone
 
 RUN mkdir -p /opt/keycloak/providers && \
-    cp -R ./standalone/deployments/* /opt/keycloak/providers/
+    cp -R ./standalone/deployments/* /opt/keycloak/providers/ || true
 
 RUN /opt/keycloak/bin/kc.sh build
 
