@@ -1,4 +1,5 @@
-FROM docker.io/bitnami/keycloak:16.1.1
+#FROM docker.io/bitnami/keycloak:16.1.1
+FROM quay.io/keycloak/keycloak:15.0.2-legacy
 
 USER root
 
