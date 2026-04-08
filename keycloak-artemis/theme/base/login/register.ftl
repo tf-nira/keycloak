@@ -52,6 +52,39 @@
 					</select>
 				</div>
 			</div>
+            
+			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('niraPartnerType',properties.kcFormGroupErrorClass!)}">
+				<div class="${properties.kcLabelWrapperClass!}">
+					<label for="niraPartnerType" class="${properties.kcLabelClass!}">${msg("niraPartnerType")}</label>
+				</div>
+				<div class="${properties.kcInputWrapperClass!}">
+					<select
+						id="user.attributes.niraPartnerType"
+						class="${properties.kcInputClass!}"
+						name="user.attributes.niraPartnerType"
+						value="${(register.formData['user.attributes.niraPartnerType']!'')}">
+							<option value="ACCESS" selected>ACCESS</option>
+							<option value="VERIFY">VERIFY</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('niraPartnerGroup',properties.kcFormGroupErrorClass!)}">
+				<div class="${properties.kcLabelWrapperClass!}">
+					<label for="niraPartnerGroup" class="${properties.kcLabelClass!}">${msg("niraPartnerGroup")}</label>
+				</div>
+				<div class="${properties.kcInputWrapperClass!}">
+					<select
+						id="user.attributes.niraPartnerGroup"
+						class="${properties.kcInputClass!}"
+						name="user.attributes.niraPartnerGroup"
+						value="${(register.formData['user.attributes.niraPartnerGroup']!'')}">
+							<option value="GOV" selected>GOV</option>
+							<option value="PRIVATE">PRIVATE</option>
+							<option value="FOREIGN">FOREIGN</option>
+					</select>
+				</div>
+			</div>
 			
 			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('address',properties.kcFormGroupErrorClass!)}">
                 <div class="${properties.kcLabelWrapperClass!}">
