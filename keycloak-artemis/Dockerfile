@@ -1,7 +1,5 @@
 FROM quay.io/keycloak/keycloak:24.0
 
-USER root
-
 ARG SOURCE
 ARG COMMIT_HASH
 ARG COMMIT_ID
@@ -12,6 +10,9 @@ LABEL commit_hash=${COMMIT_HASH}
 LABEL commit_id=${COMMIT_ID}
 LABEL build_time=${BUILD_TIME}
 LABEL maintainer="Migrated from Bitnami"
+
+
+USER root
 
 RUN microdnf install -y \
     acl ca-certificates curl gzip tar procps rsync \
