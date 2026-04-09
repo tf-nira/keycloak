@@ -1,5 +1,5 @@
 # FROM jboss/keycloak:9.0.0
-FROM docker.io/mosipid/keycloak:16.1.1
+FROM docker.io/mosipid/keycloak:1.0.6
 
 ARG SOURCE
 ARG COMMIT_HASH
