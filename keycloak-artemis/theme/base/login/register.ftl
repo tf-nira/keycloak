@@ -55,7 +55,7 @@
             
 			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('niraPartnerType',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
-					<label for="niraPartnerType" class="${properties.kcLabelClass!}">${msg("niraPartnerType")}</label>
+					<label for="niraPartnerType" class="${properties.kcLabelClass!}">NIRA Partner Type</label>
 				</div>
 				<div class="${properties.kcInputWrapperClass!}">
 					<select
@@ -71,7 +71,7 @@
 			
 			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('niraPartnerGroup',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
-					<label for="niraPartnerGroup" class="${properties.kcLabelClass!}">${msg("niraPartnerGroup")}</label>
+					<label for="niraPartnerGroup" class="${properties.kcLabelClass!}">NIRA Partner Group</label>
 				</div>
 				<div class="${properties.kcInputWrapperClass!}">
 					<select
