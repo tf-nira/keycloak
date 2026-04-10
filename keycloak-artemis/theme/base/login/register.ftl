@@ -53,32 +53,32 @@
 				</div>
 			</div>
             
-			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('niraPartnerType',properties.kcFormGroupErrorClass!)}">
+			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerAuthType',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
-					<label for="niraPartnerType" class="${properties.kcLabelClass!}">NIRA Partner Type</label>
+					<label for="partnerAuthType" class="${properties.kcLabelClass!}">NIRA Partner Type</label>
 				</div>
 				<div class="${properties.kcInputWrapperClass!}">
 					<select
-						id="user.attributes.niraPartnerType"
+						id="user.attributes.partnerAuthType"
 						class="${properties.kcInputClass!}"
-						name="user.attributes.niraPartnerType"
-						value="${(register.formData['user.attributes.niraPartnerType']!'')}">
+						name="user.attributes.partnerAuthType"
+						value="${(register.formData['user.attributes.partnerAuthType']!'')}">
 							<option value="ACCESS" selected>ACCESS</option>
 							<option value="VERIFY">VERIFY</option>
 					</select>
 				</div>
 			</div>
 			
-			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('niraPartnerGroup',properties.kcFormGroupErrorClass!)}">
+			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerGroup',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
-					<label for="niraPartnerGroup" class="${properties.kcLabelClass!}">NIRA Partner Group</label>
+					<label for="partnerGroup" class="${properties.kcLabelClass!}">NIRA Partner Group</label>
 				</div>
 				<div class="${properties.kcInputWrapperClass!}">
 					<select
-						id="user.attributes.niraPartnerGroup"
+						id="user.attributes.partnerGroup"
 						class="${properties.kcInputClass!}"
-						name="user.attributes.niraPartnerGroup"
-						value="${(register.formData['user.attributes.niraPartnerGroup']!'')}">
+						name="user.attributes.partnerGroup"
+						value="${(register.formData['user.attributes.partnerGroup']!'')}">
 							<option value="GOV" selected>GOV</option>
 							<option value="PRIVATE">PRIVATE</option>
 							<option value="FOREIGN">FOREIGN</option>
