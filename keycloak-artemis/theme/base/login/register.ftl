@@ -124,8 +124,6 @@
 						name="user.attributes.langCode"
 						value="${(register.formData['user.attributes.langCode']!'')}">
 							<option value="eng" selected>English</option>
-							<option value="ara">Arabic</option>
-							<option value="fra">French</option>
 					</select>
 				</div>
 			</div>
