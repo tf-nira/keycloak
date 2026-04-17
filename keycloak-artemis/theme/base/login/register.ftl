@@ -42,8 +42,9 @@
 						id="user.attributes.partnerType"
 						class="${properties.kcInputClass!}"
 						name="user.attributes.partnerType"
-						value="${(register.formData['user.attributes.partnerType']!'')}">
-							<option value="DEVICE_PROVIDER" selected>Device Provider</option>
+						value="${(register.formData['user.attributes.partnerType']!)}">
+                            <option value="" disabled hidden>Select Partner Type</option>
+                            <option value="DEVICE_PROVIDER">Device Provider</option>
 							<option value="FTM_PROVIDER">FTM Provider</option>
 							<option value="AUTH_PARTNER">Authentication Partner</option>
 							<option value="CREDENTIAL_PARTNER">Credential Partner or ISP</option>
@@ -62,8 +63,9 @@
 						id="user.attributes.partnerAuthType"
 						class="${properties.kcInputClass!}"
 						name="user.attributes.partnerAuthType"
-						value="${(register.formData['user.attributes.partnerAuthType']!'')}">
-							<option value="ACCESS" selected>ACCESS</option>
+						value="${(register.formData['user.attributes.partnerAuthType']!)}">
+                            <option value="" disabled hidden>Select NIRA Partner Type</option>
+                            <option value="ACCESS">ACCESS</option>
 							<option value="VERIFY">VERIFY</option>
 					</select>
 				</div>
@@ -78,8 +80,9 @@
 						id="user.attributes.partnerGroup"
 						class="${properties.kcInputClass!}"
 						name="user.attributes.partnerGroup"
-						value="${(register.formData['user.attributes.partnerGroup']!'')}">
-							<option value="GOV" selected>GOV</option>
+						value="${(register.formData['user.attributes.partnerGroup']!)}">
+                            <option value="" disabled hidden>Select NIRA Partner Group</option>
+                            <option value="GOV">GOV</option>
 							<option value="PRIVATE">PRIVATE</option>
 							<option value="FOREIGN">FOREIGN</option>
 					</select>
