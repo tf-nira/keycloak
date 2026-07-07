@@ -54,7 +54,7 @@
 				</div>
 			</div>
             
-			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerAuthType',properties.kcFormGroupErrorClass!)}">
+			<div id="partnerAuthTypeDiv" class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerAuthType',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
 					<label for="partnerAuthType" class="${properties.kcLabelClass!}">NIRA Partner Type</label>
 				</div>
@@ -71,7 +71,7 @@
 				</div>
 			</div>
 			
-			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerGroup',properties.kcFormGroupErrorClass!)}">
+			<div id="partnerGroupDiv" class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerGroup',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
 					<label for="partnerGroup" class="${properties.kcLabelClass!}">NIRA Partner Group</label>
 				</div>
@@ -181,6 +181,38 @@
                     <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doRegister")}"/>
                 </div>
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+
+                const partnerType = document.getElementById("user.attributes.partnerType");
+                const partnerAuthTypeDiv = document.getElementById("partnerAuthTypeDiv");
+                const partnerGroupDiv = document.getElementById("partnerGroupDiv");
+
+                const partnerAuthType = document.getElementById("user.attributes.partnerAuthType");
+                const partnerGroup = document.getElementById("user.attributes.partnerGroup");
+
+            function togglePartnerFields() {
+
+                if (partnerType.value === "AUTH_PARTNER") {
+                    partnerAuthTypeDiv.style.display = "";
+                    partnerGroupDiv.style.display = "";
+                    partnerAuthType.disabled = false;
+                    partnerGroup.disabled = false;
+                } else {
+                    partnerAuthTypeDiv.style.display = "none";
+                    partnerGroupDiv.style.display = "none";
+                    partnerAuthType.value = "";
+                    partnerGroup.value = "";
+                    partnerAuthType.disabled = true;
+                    partnerGroup.disabled = true;
+                }
+            }
+
+            togglePartnerFields();
+            partnerType.addEventListener("change", togglePartnerFields);
+
+            });
+            </script>
         </form>
     </#if>
 </@layout.registrationLayout>
