@@ -118,7 +118,7 @@
 			
 			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('langCode',properties.kcFormGroupErrorClass!)}">
 				<div class="${properties.kcLabelWrapperClass!}">
-					<label for="langCode" class="${properties.kcLabelClass!}">${msg("langCode")}</label>
+					<label for="langCode" class="${properties.kcLabelClass!}">Language Code</label>
 				</div>
 				<div class="${properties.kcInputWrapperClass!}">
 					<select
