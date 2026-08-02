@@ -580,13 +580,7 @@ form#kc-select-back-form div.login-pf-social-section {
     border-left: 0px;
 }
 
-/* Increase registration form width only */
-#kc-register-form {
-    width: 900px !important;
-    max-width: 900px !important;
-}
-
-#kc-register-form .card-pf {
-    width: 900px !important;
-    max-width: 900px !important;
+.registration-page .card-pf {
+    max-width: 1200px !important;
+    width: 1200px !important;
 }
