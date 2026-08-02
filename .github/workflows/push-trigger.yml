@@ -20,6 +20,7 @@ on:
       - release*
       - MOSIP*
       - tf_nira_dev
+      - tf_nira_jaga
   
 jobs:
   build-dockers:
