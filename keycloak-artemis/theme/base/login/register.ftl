@@ -13,9 +13,17 @@
                     <form id="kc-register-form" action="${url.registrationAction}" method="post">
 
                         <style>
-                            #kc-content-wrapper {
+                            .card-pf {
+                                max-width: 1400px !important;
+                            }
+
+                            .login-pf-page .card-pf {
                                 max-width: 1400px !important;
                                 width: 100% !important;
+                            }
+
+                            #kc-content-wrapper {
+                                max-width: 100% !important;
                             }
 
                             #kc-content {
