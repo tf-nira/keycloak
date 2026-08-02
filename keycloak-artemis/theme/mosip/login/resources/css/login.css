@@ -580,8 +580,26 @@ form#kc-select-back-form div.login-pf-social-section {
     border-left: 0px;
 }
 
-/* Apply only for registration page */
+/* ===== Registration page full width ===== */
+
+/* remove container constraints */
+.register-page .login-pf .container {
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* expand the Keycloak card wrapper (comes from template.ftl) */
 .register-page .login-pf-page .card-pf {
-    max-width: 1400px !important;
-    width: 1400px !important;
+  max-width: none !important;   /* remove 500px limit */
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* your inner page width */
+.register-page .page-container {
+  max-width: 1400px;   /* or 1200px if you prefer */
+  margin: 0 auto;
 }
