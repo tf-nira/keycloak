@@ -13,11 +13,19 @@
                     <form id="kc-register-form" action="${url.registrationAction}" method="post">
 
                         <style>
-                            /* PAGE ALIGNMENT */
+                            #kc-content-wrapper {
+                                max-width: 1400px !important;
+                                width: 100% !important;
+                            }
+
+                            #kc-content {
+                                width: 100% !important;
+                            }
+
                             .page-container {
                                 max-width: 1400px;
                                 margin: 0 auto;
-                                padding: 20px 20px;
+                                padding: 20px;
                             }
 
                             .button-container {
