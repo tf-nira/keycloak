@@ -580,7 +580,8 @@ form#kc-select-back-form div.login-pf-social-section {
     border-left: 0px;
 }
 
-.registration-page .card-pf {
-    max-width: 1200px !important;
-    width: 1200px !important;
+/* Apply only for registration page */
+.register-page .login-pf-page .card-pf {
+    max-width: 1400px !important;
+    width: 1400px !important;
 }
