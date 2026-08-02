@@ -20,7 +20,7 @@ on:
       - release*
       - MOSIP*
       - tf_nira_dev
-      - tf_nira_form
+      - form
   
 jobs:
   build-dockers:
