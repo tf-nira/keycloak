@@ -39,7 +39,6 @@
                 padding: 0 !important;
             }
 
-
             .kc-pms-page {
                 width: 100%;
                 min-height: 100vh;
@@ -155,11 +154,19 @@
                 border-color: #cc0000;
             }
 
-
             #kc-content-wrapper > .alert,
-            #kc-content-wrapper > #kc-error-message,
-            .alert.alert-error,
-            .kc-feedback-text {
+            #kc-content-wrapper .alert,
+            #kc-content > .alert,
+            #kc-content .alert,
+            .alert-error,
+            .alert-warning,
+            .alert-success,
+            .alert-info,
+            #kc-content-wrapper #kc-error-message,
+            #kc-content #kc-error-message,
+            .kc-feedback-text,
+            #kc-content-wrapper .pf-c-alert,
+            #kc-content .pf-c-alert {
                 display: none !important;
             }
 
@@ -194,7 +201,7 @@
                                 <label for="firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="firstName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('firstName')> kc-pms-input-error</#if>" name="firstName" value="${(register.formData.firstName!'')}" required pattern="[A-Za-z ]+" title="Only alphabets are allowed" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')" />
+                                <input type="text" id="firstName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('firstName')> kc-pms-input-error</#if>" name="firstName" value="${(register.formData.firstName!'')}" required pattern="[A-Za-z0-9]+" maxlength="50" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
                                 <#if messagesPerField.existsError('firstName')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('firstName'))?no_esc}</span>
                                 </#if>
@@ -206,7 +213,7 @@
                                 <label for="lastName" class="${properties.kcLabelClass!}">${msg("lastName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="lastName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('lastName')> kc-pms-input-error</#if>" name="lastName" value="${(register.formData.lastName!'')}" required pattern="[A-Za-z ]+" title="Only alphabets are allowed" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')" />
+                                <input type="text" id="lastName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('lastName')> kc-pms-input-error</#if>" name="lastName" value="${(register.formData.lastName!'')}" required pattern="[A-Za-z0-9]+" maxlength="50" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
                                 <#if messagesPerField.existsError('lastName')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('lastName'))?no_esc}</span>
                                 </#if>
@@ -237,7 +244,7 @@
                                 <label for="organizationName" class="${properties.kcLabelClass!}">${msg("organizationName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="organizationName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('organizationName')> kc-pms-input-error</#if>" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" required />
+                                <input type="text" id="organizationName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('organizationName')> kc-pms-input-error</#if>" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" required pattern="[A-Za-z0-9]+" maxlength="100" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
                                 <#if messagesPerField.existsError('organizationName')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('organizationName'))?no_esc}</span>
                                 </#if>
@@ -261,7 +268,7 @@
                                 <label for="phoneNumber" class="${properties.kcLabelClass!}">${msg("phoneNumber")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="phoneNumber" class="${properties.kcInputClass!}<#if messagesPerField.existsError('phoneNumber')> kc-pms-input-error</#if>" name="user.attributes.phoneNumber" value="${(register.formData['user.attributes.phoneNumber']!'')}" autocomplete="phoneNumber" required pattern="[0-9]+" inputmode="numeric" title="Only numbers are allowed" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                                <input type="text" id="phoneNumber" class="${properties.kcInputClass!}<#if messagesPerField.existsError('phoneNumber')> kc-pms-input-error</#if>" name="user.attributes.phoneNumber" value="${(register.formData['user.attributes.phoneNumber']!'')}" autocomplete="phoneNumber" required pattern="[0-9]{1,11}" maxlength="11" inputmode="numeric" title="Only numbers are allowed (max 11 digits)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" />
                                 <#if messagesPerField.existsError('phoneNumber')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('phoneNumber'))?no_esc}</span>
                                 </#if>
@@ -370,7 +377,7 @@
                                 <label for="username" class="${properties.kcLabelClass!}">${msg("username")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="username" class="${properties.kcInputClass!}<#if messagesPerField.existsError('username')> kc-pms-input-error</#if>" name="username" value="${(register.formData.username!'')}" autocomplete="username" required />
+                                <input type="text" id="username" class="${properties.kcInputClass!}<#if messagesPerField.existsError('username')> kc-pms-input-error</#if>" name="username" value="${(register.formData.username!'')}" autocomplete="username" required pattern="[A-Za-z0-9]+" maxlength="50" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
                                 <#if messagesPerField.existsError('username')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('username'))?no_esc}</span>
                                 </#if>
