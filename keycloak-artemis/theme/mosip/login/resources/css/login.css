@@ -105,7 +105,7 @@ a#kc-current-locale-link::after {
 }
 
 .login-pf .container {
-    padding-top: 40px;
+    padding-top: 15px;
 }
 
 .login-pf a:hover {
@@ -121,7 +121,7 @@ a#kc-current-locale-link::after {
     background-repeat: no-repeat;
     height: 63px;
     width: 300px;
-    margin: 62px auto 0;
+    margin: 16px auto 0;
 }
 
 div.kc-logo-text {
@@ -150,7 +150,7 @@ div.kc-logo-text span {
     text-transform: uppercase;
     letter-spacing: 3px;
     line-height: 1.2em;
-    padding: 62px 10px 20px;
+    padding: 20px 10px 10px;
     white-space: normal;
 }
 
@@ -484,7 +484,8 @@ a.zocial  {
   background: #fff;
   margin: 0 auto;
   padding: 0 20px;
-  max-width: 500px;
+  max-width: 1400px;
+  width: 92%;
   border-top: 0;
   box-shadow: 0 0 0;
 }
