@@ -5,36 +5,20 @@
     <#elseif section = "form">
 
         <style>
-            /* ==========================================================
-               Everything below is scoped to the Partner Registration
-               page only (this <style> tag only renders when register.ftl
-               is rendered). Selectors that reuse the shared theme's ids/
-               classes (#kc-header, .card-pf, .login-pf-header, etc.) are
-               marked !important so they win regardless of what login.css
-               currently contains — but because this block only exists on
-               this page, the login page / other Keycloak flows that don't
-               include this template are completely unaffected.
-               New elements introduced by this page all use a "kc-pms-"
-               prefix so they never collide with the shared theme classes.
-               ========================================================== */
 
             html, body {
                 margin: 0 !important;
                 padding: 0 !important;
             }
 
-            /* Hide the shared "MOSIP" wordmark header */
             #kc-header {
                 display: none !important;
             }
 
-            /* Hide the shared "Register" page title */
             .login-pf-header {
                 display: none !important;
             }
 
-            /* Un-cap the shared card container so this page fills the screen,
-               regardless of the max-width currently set in login.css */
             .card-pf {
                 max-width: 100% !important;
                 width: 100% !important;
@@ -55,7 +39,6 @@
                 padding: 0 !important;
             }
 
-            /* ---- Partner Registration page-specific layout ---- */
 
             .kc-pms-page {
                 width: 100%;
@@ -160,8 +143,7 @@
                 cursor: pointer;
             }
 
-            /* Hide the theme's default duplicate "Back to Login" link;
-               we render our own styled one in .kc-pms-actions below */
+
             #kc-form-options {
                 display: none;
             }
