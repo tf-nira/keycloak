@@ -143,6 +143,25 @@
                 cursor: pointer;
             }
 
+            .kc-pms-field-error {
+                display: block;
+                color: #cc0000;
+                font-size: 12px;
+                margin-top: 4px;
+            }
+
+            .kc-pms-grid .form-group input.kc-pms-input-error,
+            .kc-pms-grid .form-group select.kc-pms-input-error {
+                border-color: #cc0000;
+            }
+
+
+            #kc-content-wrapper > .alert,
+            #kc-content-wrapper > #kc-error-message,
+            .alert.alert-error,
+            .kc-feedback-text {
+                display: none !important;
+            }
 
             #kc-form-options {
                 display: none;
@@ -175,7 +194,10 @@
                                 <label for="firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="firstName" class="${properties.kcInputClass!}" name="firstName" value="${(register.formData.firstName!'')}" />
+                                <input type="text" id="firstName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('firstName')> kc-pms-input-error</#if>" name="firstName" value="${(register.formData.firstName!'')}" required pattern="[A-Za-z ]+" title="Only alphabets are allowed" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')" />
+                                <#if messagesPerField.existsError('firstName')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('firstName'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -184,7 +206,10 @@
                                 <label for="lastName" class="${properties.kcLabelClass!}">${msg("lastName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="lastName" class="${properties.kcInputClass!}" name="lastName" value="${(register.formData.lastName!'')}" />
+                                <input type="text" id="lastName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('lastName')> kc-pms-input-error</#if>" name="lastName" value="${(register.formData.lastName!'')}" required pattern="[A-Za-z ]+" title="Only alphabets are allowed" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')" />
+                                <#if messagesPerField.existsError('lastName')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('lastName'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -197,9 +222,13 @@
                                     id="user.attributes.langCode"
                                     class="${properties.kcInputClass!}"
                                     name="user.attributes.langCode"
-                                    value="${(register.formData['user.attributes.langCode']!'')}">
+                                    value="${(register.formData['user.attributes.langCode']!'')}"
+                                    required>
                                         <option value="eng" selected>English</option>
                                 </select>
+                                <#if messagesPerField.existsError('langCode')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('langCode'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -208,7 +237,10 @@
                                 <label for="organizationName" class="${properties.kcLabelClass!}">${msg("organizationName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="organizationName" class="${properties.kcInputClass!}" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" />
+                                <input type="text" id="organizationName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('organizationName')> kc-pms-input-error</#if>" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" required />
+                                <#if messagesPerField.existsError('organizationName')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('organizationName'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -217,7 +249,10 @@
                                 <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="email" class="${properties.kcInputClass!}" name="email" value="${(register.formData.email!'')}" autocomplete="email" />
+                                <input type="text" id="email" class="${properties.kcInputClass!}<#if messagesPerField.existsError('email')> kc-pms-input-error</#if>" name="email" value="${(register.formData.email!'')}" autocomplete="email" required />
+                                <#if messagesPerField.existsError('email')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('email'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -226,7 +261,10 @@
                                 <label for="phoneNumber" class="${properties.kcLabelClass!}">${msg("phoneNumber")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="phoneNumber" class="${properties.kcInputClass!}" name="user.attributes.phoneNumber" value="${(register.formData['user.attributes.phoneNumber']!'')}" autocomplete="phoneNumber" />
+                                <input type="text" id="phoneNumber" class="${properties.kcInputClass!}<#if messagesPerField.existsError('phoneNumber')> kc-pms-input-error</#if>" name="user.attributes.phoneNumber" value="${(register.formData['user.attributes.phoneNumber']!'')}" autocomplete="phoneNumber" required pattern="[0-9]+" inputmode="numeric" title="Only numbers are allowed" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                                <#if messagesPerField.existsError('phoneNumber')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('phoneNumber'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -235,7 +273,10 @@
                                 <label for="address" class="${properties.kcLabelClass!}">${msg("address")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="address" class="${properties.kcInputClass!}" name="user.attributes.address" value="${(register.formData['user.attributes.address']!'')}" autocomplete="address" />
+                                <input type="text" id="address" class="${properties.kcInputClass!}<#if messagesPerField.existsError('address')> kc-pms-input-error</#if>" name="user.attributes.address" value="${(register.formData['user.attributes.address']!'')}" autocomplete="address" required />
+                                <#if messagesPerField.existsError('address')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('address'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -256,7 +297,8 @@
                                     id="user.attributes.partnerType"
                                     class="${properties.kcInputClass!}"
                                     name="user.attributes.partnerType"
-                                    value="${(register.formData['user.attributes.partnerType']!)}">
+                                    value="${(register.formData['user.attributes.partnerType']!)}"
+                                    required>
                                         <option value=""></option>
                                         <option value="DEVICE_PROVIDER">Device Provider</option>
                                         <option value="FTM_PROVIDER">FTM Provider</option>
@@ -265,6 +307,9 @@
                                         <option value="ABIS_PARTNER">ABIS Partner</option>
                                         <option value="SDK_PARTNER">SDK Partner</option>
                                 </select>
+                                <#if messagesPerField.existsError('partnerType')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('partnerType'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -277,11 +322,15 @@
                                     id="user.attributes.partnerAuthType"
                                     class="${properties.kcInputClass!}"
                                     name="user.attributes.partnerAuthType"
-                                    value="${(register.formData['user.attributes.partnerAuthType']!)}">
+                                    value="${(register.formData['user.attributes.partnerAuthType']!)}"
+                                    required>
                                         <option value=""></option>
                                         <option value="ACCESS">ACCESS</option>
                                         <option value="VERIFY">VERIFY</option>
                                 </select>
+                                <#if messagesPerField.existsError('partnerAuthType')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('partnerAuthType'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -294,12 +343,16 @@
                                     id="user.attributes.partnerGroup"
                                     class="${properties.kcInputClass!}"
                                     name="user.attributes.partnerGroup"
-                                    value="${(register.formData['user.attributes.partnerGroup']!)}">
+                                    value="${(register.formData['user.attributes.partnerGroup']!)}"
+                                    required>
                                         <option value=""></option>
                                         <option value="GOV">GOV</option>
                                         <option value="PRIVATE">PRIVATE</option>
                                         <option value="FOREIGN">FOREIGN</option>
                                 </select>
+                                <#if messagesPerField.existsError('partnerGroup')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('partnerGroup'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -317,7 +370,10 @@
                                 <label for="username" class="${properties.kcLabelClass!}">${msg("username")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="username" class="${properties.kcInputClass!}" name="username" value="${(register.formData.username!'')}" autocomplete="username" />
+                                <input type="text" id="username" class="${properties.kcInputClass!}<#if messagesPerField.existsError('username')> kc-pms-input-error</#if>" name="username" value="${(register.formData.username!'')}" autocomplete="username" required />
+                                <#if messagesPerField.existsError('username')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('username'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
                       </#if>
@@ -328,7 +384,10 @@
                                 <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="password" id="password" class="${properties.kcInputClass!}" name="password" autocomplete="new-password"/>
+                                <input type="password" id="password" class="${properties.kcInputClass!}<#if messagesPerField.existsError('password')> kc-pms-input-error</#if>" name="password" autocomplete="new-password" required/>
+                                <#if messagesPerField.existsError('password')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('password'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
 
@@ -337,7 +396,10 @@
                                 <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="password" id="password-confirm" class="${properties.kcInputClass!}" name="password-confirm" />
+                                <input type="password" id="password-confirm" class="${properties.kcInputClass!}<#if messagesPerField.existsError('password-confirm')> kc-pms-input-error</#if>" name="password-confirm" required />
+                                <#if messagesPerField.existsError('password-confirm')>
+                                    <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}</span>
+                                </#if>
                             </div>
                         </div>
                         </#if>
