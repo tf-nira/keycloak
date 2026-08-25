@@ -268,7 +268,7 @@
                                 <label for="phoneNumber" class="${properties.kcLabelClass!}">${msg("phoneNumber")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="phoneNumber" class="${properties.kcInputClass!}<#if messagesPerField.existsError('phoneNumber')> kc-pms-input-error</#if>" name="user.attributes.phoneNumber" value="${(register.formData['user.attributes.phoneNumber']!'')}" autocomplete="phoneNumber" required pattern="[0-9]{1,11}" maxlength="11" inputmode="numeric" title="Only numbers are allowed (max 11 digits)" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" />
+                                <input type="text" id="phoneNumber" class="${properties.kcInputClass!}<#if messagesPerField.existsError('phoneNumber')> kc-pms-input-error</#if>" name="user.attributes.phoneNumber" value="${(register.formData['user.attributes.phoneNumber']!'')}" autocomplete="phoneNumber" required pattern="[0-9]{9,11}" minlength="9" maxlength="11" inputmode="numeric" title="Phone number must contain 9 to 11 digits" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)" />
                                 <#if messagesPerField.existsError('phoneNumber')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('phoneNumber'))?no_esc}</span>
                                 </#if>
