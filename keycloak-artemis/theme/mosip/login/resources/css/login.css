@@ -150,12 +150,12 @@ div.kc-logo-text span {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 300px;          /* match your logo's aspect ratio */
-    height: 63px;          /* adjust to your logo's height */
+    width: 300px;
+    height: 63px;
     margin: 0 auto;
-    padding: 62px 0 0;     /* keep similar top spacing to original */
-    font-size: 0;          /* hide the text visually */
-    text-indent: -9999px;  /* push text off-screen (better than color trick) */
+    padding: 62px 0 0;
+    font-size: 0;
+    text-indent: -9999px;
     overflow: hidden;
 }
 
