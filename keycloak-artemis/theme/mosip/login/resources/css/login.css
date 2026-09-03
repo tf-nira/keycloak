@@ -146,12 +146,17 @@ div.kc-logo-text span {
 }
 
 #kc-header-wrapper {
-    font-size: 29px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    line-height: 1.2em;
-    padding: 62px 10px 20px;
-    white-space: normal;
+    background-image: url(../img/nira_logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 300px;          /* match your logo's aspect ratio */
+    height: 63px;          /* adjust to your logo's height */
+    margin: 0 auto;
+    padding: 62px 0 0;     /* keep similar top spacing to original */
+    font-size: 0;          /* hide the text visually */
+    text-indent: -9999px;  /* push text off-screen (better than color trick) */
+    overflow: hidden;
 }
 
 #kc-content {
