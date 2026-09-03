@@ -20,7 +20,7 @@ on:
       - release*
       - MOSIP*
       - tf_nira_dev
-      - tf_nira_dev_Satyam
+      - tf_nira_dev_QATEST
   
 jobs:
   build-dockers:
