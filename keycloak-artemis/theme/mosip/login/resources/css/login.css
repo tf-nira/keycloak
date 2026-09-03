@@ -117,7 +117,7 @@ a#kc-current-locale-link::after {
 }
 
 #kc-logo-wrapper {
-    background-image: url(../img/mosiplogo.png);
+    background-image: url(../img/nira_logo.png);
     background-repeat: no-repeat;
     height: 63px;
     width: 300px;
@@ -125,7 +125,7 @@ a#kc-current-locale-link::after {
 }
 
 div.kc-logo-text {
-    background-image: url(../img/mosiplogo.png);
+    background-image: url(../img/nira_logo.png);
     background-repeat: no-repeat;
     height: 131px;
     width: 300px;
