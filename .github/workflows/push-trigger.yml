@@ -21,6 +21,7 @@ on:
       - MOSIP*
       - tf_nira_dev
       - tf_nira_dev_QATEST
+      - tf_nira_jd
   
 jobs:
   build-dockers:
