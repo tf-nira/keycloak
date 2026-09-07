@@ -241,7 +241,7 @@
 
                         <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('organizationName',properties.kcFormGroupErrorClass!)}">
                             <div class="${properties.kcLabelWrapperClass!}">
-                                <label for="organizationName" class="${properties.kcLabelClass!}">${msg("organizationName")}</label>
+                                <label for="organizationName" class="${properties.kcLabelClass!}">Organization Name</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
                                 <input type="text" id="organizationName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('organizationName')> kc-pms-input-error</#if>" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" required pattern="[A-Za-z0-9]+" maxlength="100" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
@@ -297,7 +297,7 @@
 
                         <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('partnerType',properties.kcFormGroupErrorClass!)}">
                             <div class="${properties.kcLabelWrapperClass!}">
-                                <label for="partnerType" class="${properties.kcLabelClass!}">${msg("partnerType")}</label>
+                                <label for="partnerType" class="${properties.kcLabelClass!}">Partner Type</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
                                 <select
