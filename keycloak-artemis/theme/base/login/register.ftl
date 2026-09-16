@@ -201,7 +201,7 @@
                                 <label for="firstName" class="${properties.kcLabelClass!}">${msg("firstName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="firstName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('firstName')> kc-pms-input-error</#if>" name="firstName" value="${(register.formData.firstName!'')}" required pattern="[A-Za-z0-9]+" maxlength="50" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
+                                <input type="text" id="firstName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('firstName')> kc-pms-input-error</#if>" name="firstName" value="${(register.formData.firstName!'')}" required pattern="\S(.*\S)?" maxlength="50" title="Leading and trailing spaces are not allowed" oninput="this.value = this.value.replace(/^\s+/, '')" />
                                 <#if messagesPerField.existsError('firstName')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('firstName'))?no_esc}</span>
                                 </#if>
@@ -213,7 +213,7 @@
                                 <label for="lastName" class="${properties.kcLabelClass!}">${msg("lastName")}</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="lastName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('lastName')> kc-pms-input-error</#if>" name="lastName" value="${(register.formData.lastName!'')}" required pattern="[A-Za-z0-9]+" maxlength="50" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
+                                <input type="text" id="lastName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('lastName')> kc-pms-input-error</#if>" name="lastName" value="${(register.formData.lastName!'')}" required pattern="\S(.*\S)?" maxlength="50" title="Leading and trailing spaces are not allowed" oninput="this.value = this.value.replace(/^\s+/, '')" />
                                 <#if messagesPerField.existsError('lastName')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('lastName'))?no_esc}</span>
                                 </#if>
@@ -244,7 +244,7 @@
                                 <label for="organizationName" class="${properties.kcLabelClass!}">Organization Name</label>
                             </div>
                             <div class="${properties.kcInputWrapperClass!}">
-                                <input type="text" id="organizationName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('organizationName')> kc-pms-input-error</#if>" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" required pattern="[A-Za-z0-9]+" maxlength="100" title="Only alphanumeric characters are allowed" oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')" />
+                                <input type="text" id="organizationName" class="${properties.kcInputClass!}<#if messagesPerField.existsError('organizationName')> kc-pms-input-error</#if>" name="user.attributes.organizationName" value="${(register.formData['user.attributes.organizationName']!'')}" autocomplete="organizationName" required pattern="\S(.*\S)?" maxlength="100" title="Leading and trailing spaces are not allowed" oninput="this.value = this.value.replace(/^\s+/, '')" />
                                 <#if messagesPerField.existsError('organizationName')>
                                     <span class="kc-pms-field-error">${kcSanitize(messagesPerField.get('organizationName'))?no_esc}</span>
                                 </#if>
